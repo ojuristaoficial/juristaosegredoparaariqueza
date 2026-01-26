@@ -393,40 +393,7 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         // Script de afiliados
-        const AFFILIATE_KEY = 'kiwify_aff';
-        const LINK_CLASS = 'checkout-link';
-        const BASE_CHECKOUT_URL = 'https://pay.kiwify.com.br/73P7C26';
 
-        function getAffiliateParamFromUrl() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('aff');
-        }
-
-        function saveAffiliate(affValue) {
-            if (affValue) {
-                localStorage.setItem(AFFILIATE_KEY, affValue);
-            }
-        }
-
-        function getAffiliateFromStorage() {
-            return localStorage.getItem(AFFILIATE_KEY);
-        }
-
-        const urlAffiliate = getAffiliateParamFromUrl();
-        saveAffiliate(urlAffiliate);
-
-        const activeAffiliate = urlAffiliate || getAffiliateFromStorage();
-
-        let finalCheckoutUrl = BASE_CHECKOUT_URL;
-
-        if (activeAffiliate) {
-            finalCheckoutUrl = `${BASE_CHECKOUT_URL}?aff=${activeAffiliate}`;
-            console.log(`[Kiwify Affiliates] Afiliado ativo: ${activeAffiliate}`);
-        }
-
-        const checkoutLinks = document.querySelectorAll(`a.${LINK_CLASS}`);
-        checkoutLinks.forEach(link => {
-            link.href = finalCheckoutUrl;
         });
     });
 </script>
